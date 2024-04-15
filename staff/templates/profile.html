@@ -1,0 +1,326 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> {{ profile.name }}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="{% static 'assets/images/logo/favicon.png' %}" type="image/jpg">
+<link href="{% static 'profile/assets/css/bootstrap.min.css' %}" rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static 'profile/assets/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+<link href="{% static 'profile/assets/css/style.css' %}" rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/futura-font@1.0.0/styles.min.css">
+<link type="text/css" rel="stylesheet" href="{% static 'profile/assets/css/lightgallery.css' %}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<script async="" src="{% static 'profile/assets/js/js' %}"></script>
+
+<link href="{% static 'profile/assets/css/theme.css' %}" rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static 'profile/assets/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css' %}">
+<script src="{% static 'profile/assets/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js' %}"></script>
+
+</head>
+<body>
+<!-- Start | Main Row -->
+<div class="row main-row-div justify-content-md-center" id="home">
+<div class="col-sm-8 col-md-6 col-lg-4 div-center-align">
+
+<!-- Start - Home Section -->
+<div class="home-div" style="border: 3px solid #d62063";>
+<div class="home-div-white-div">
+
+    <h1 class="business-name">hospital</h1>
+<h2>
+  <div class="user1"><img src="{{ profile.image.url }}" style="border-radius: 50%; width: 33%; border: 2px solid #666666;"></div>
+  <span style="font-family: math; font-weight: 500;">{{ profile.name }} | {{ profile.position }}</span></h2>
+
+<ul class="home-cta-btns-ul">
+     <li><a href="tel:{{ profile.phone }}"><i class="fa fa-phone"></i><span>Call</span></a></li>
+     <li><a href="https://wa.me/{{ profile.whatsapp }}" target="_blank"><i class="fa fa-whatsapp"></i><span>Whatsapp</span></a></li>
+    <li><a href="mailto:{{ profile.email }}"><i class="fa fa-envelope"></i><span>Mail</span></a></li>
+    <li><a href="{{ profile.map }}" target="_blank"><i class="fa fa-map-marker"></i><span>Map</span></a></li>
+	    <li><a href="{{ profile.website }}" target="_blank"><i class="fa fa-globe"></i><span>Website</span></a></li>
+</ul>
+</div>
+<div class="home-div-content-div">
+<ol class="contact-points-ul">
+
+<li><a href="tel:{{ profile.phone }}"><i class="fa fa-phone"></i><span>{{ profile.phone }}</span></a></li>
+    <li><a href="mailto:{{ profile.email }}"><i class="fa fa-envelope"></i><span>{{ profile.email }}</span></a></li>
+    <li><a href="{{ profile.website }}" target="_blank"><i class="fa fa-globe"></i><span>{{ profile.website }}</span></a></li>
+   <li><i class="fa fa-clock-o"></i><span>Mon - Sat : 8-30 AM to 5-30 PM</span></li>
+  <li><a href="{{ profile.map }}" target="_blank"><i class="fa fa-map-marker"></i><span>Al Kazim Building 3,Abu Hail, Deira,
+     Dubai, UAE.</span></a></li>
+</ol>
+
+<div class="home-2-btns">
+<button type="button" class="btn btn-primary btn1" onclick="generateVCard()">
+  <i class="fa fa-address-book"></i>Save contact
+</button>
+</div>
+
+<ul class="social-ul">
+
+<!-- Facebook -->
+<li><a href="https://www.facebook.com/gulftimemediauae/" target="_blank"><i class="fa fa-facebook active-i"></i></a></li>
+<li><a href="https://www.linkedin.com/company/gulf-time-media-llc/" target="_blank"><i class="fa fa-linkedin active-i"></i></a></li>
+<li><a href="https://www.instagram.com/gulftimemediallc/" target="_blank"><i class="fa fa-instagram active-i"></i></a></li>
+<li><a href="https://www.youtube.com/@gulftimemediallc" target="_blank"><i class="fa fa-youtube-play active-i"></i></a></li>
+</ul>
+</div>
+</div>
+<!-- End - Home Section -->
+
+<!-- Start - About Section -->
+<div class="section about-div" style="border: 3px solid #d62063;">
+<h2>About us</h2>
+<div class="about-content">
+<p class="about-p" style="text-align: center;"> {{ profile.about }}</p>
+
+</div>
+</div>
+<!-- End - About Section -->
+
+<!-- Start - Products Section -->
+<div class="section" style="border: 3px solid #d62063";>
+  <h2>Products</h2>
+    {% for product in product %}
+
+  <!-- Product 1 -->
+  <div class="single-prod-serv-div">
+      <h3>{{ product.name }}</h3>
+       <h4 style="font-size: 15px; font-weight: 700; font-family: system-ui;">{{ product.subtitle }}</h4>
+      <img src="{{ product.image.url }}" height="100%" >
+
+      <div id="module">
+        <ul class="social-ul">
+          <!-- Facebook -->
+          <li><a href="{{ product.facebook }}" target="_blank"><i class="fa fa-facebook active-i"></i></a></li>
+
+          <li><a href="{{ product.linkedin }}" target="_blank"><i class="fa fa-linkedin active-i"></i></a></li>
+          <!-- Instagram -->
+          <li><a href="{{ product.instagram }}" target="_blank"><i class="fa fa-instagram active-i"></i></a></li>
+          <!-- Youtube -->
+          <li><a href="{{ product.youtube }}" target="_blank"><i class="fa fa-youtube-play active-i"></i></a></li>
+          <li><a href="{{ product.website }}" target="_blank"><i class="fa fa-globe active-i"></i></a></li>
+
+      </ul>
+
+      <div class="prod-btns">
+                <a href="#" class="whatsapp-enquiry-btn"
+                   data-product="{{ product.name }}"
+                   data-enquiry="I'm interested in {{ product.name }}.">
+                    <button type="button" class="btn btn-primary prod-ind-btn whatsapp-enquiry">
+                        <i class="fa fa-whatsapp"></i>Quick Enquiry
+                    </button>
+                </a>
+            </div>
+
+      </div>
+  </div>
+
+    {% endfor %}
+
+
+<!-- End - Products Section -->
+
+<!-- Start - Services Section -->
+<div class="section">
+    <h2>Services</h2>
+    {% for service in service %}
+        <div class="single-prod-serv-div">
+            <h3>{{ service.name }}</h3>
+            <img src="{{ service.image.url }}">
+            <p>{{ service.description }}</p>
+
+            <div class="prod-btns">
+                <a href="#" class="whatsapp-enquiry-btn"
+                   data-product="{{ service.name }}"
+                   data-enquiry="I'm interested in {{ service.name }}.">
+                    <button type="button" class="btn btn-primary prod-ind-btn whatsapp-enquiry">
+                        <i class="fa fa-whatsapp"></i>Quick Enquiry
+                    </button>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<!-- End - Services Section -->
+
+<!-- Start - Gallery Section -->
+<div class="section" id="gallery">
+<h2></i>Gallery</h2>
+
+<div class="demo-gallery">
+<ul id="lightgallery" class="list-unstyled row">
+    {% for gallery in gallery %}
+     <li class="col-4">
+    <a href="{{ gallery.image.url }}">
+        <img class="img-responsive" src="{{ gallery.image.url }}">
+    </a>
+
+
+        {% endfor %}
+
+
+</ul>
+</div>
+
+</div>
+<!-- End - Gallery Section -->
+
+
+
+<!-- Start - Video Section -->
+<div class="section">
+<h2>Videos</h2>
+{% for videos in videos %}
+<div class="single-video">
+    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ videos.youtube_video_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+</div>
+            {% endfor %}
+
+</div>
+<!-- End - Video Section -->
+
+
+<!-- Start - Contact Form Section -->
+<div class="section" style="border: 3px solid #d62063">
+<h2>Contact us</h2>
+<form method="POST">
+    {% csrf_token %}
+<div class="form-group">
+<!-- <label for="name">Name :</label> -->
+    <div class="input-group mb-2">
+    <div class="input-group-prepend">
+        <div class="input-group-text form-prefix"><i class="fa fa-user-circle-o"></i></div>
+    </div>
+    <input type="text" class="form-control" name="name" required="" placeholder="Enter Name">
+    </div>
+</div>
+
+<div class="form-group">
+<!-- <label for="email">E-mail :</label> -->
+    <div class="input-group mb-2">
+    <div class="input-group-prepend">
+        <div class="input-group-text form-prefix"><i class="fa fa-envelope"></i></div>
+    </div>
+    <input type="email" class="form-control" name="email" required="" placeholder="Enter E-mail">
+    </div>
+</div>
+
+<div class="form-group">
+<!-- <label for="mobile">Mobile :</label> -->
+    <div class="input-group mb-2">
+    <div class="input-group-prepend">
+        <div class="input-group-text form-prefix"><i class="fa fa-phone"></i></div>
+    </div>
+    <input type="tel" class="form-control" name="phone" required="" placeholder="Enter Mobile">
+    </div>
+</div>
+
+  <div class="form-group">
+    <!-- <label for="message">Message :</label> -->
+    <textarea class="form-control" name="message" rows="3" required="" placeholder="Message here..."></textarea>
+  </div>
+  <button type="submit" name="submit" class="btn btn-primary form-submit"><i class="fa fa-paper-plane"></i> Submit</button>
+</form>
+</div>
+<!-- End - Contact Form Section -->
+
+<!-- Start - Google Map Section -->
+<div class="section" style="border: 3px solid #d62063">
+<h2>Reach us</h2>
+<iframe class="gmap" frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.7562872722497!2d55.349264575384446!3d25.27878257765856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6f9fc566a887%3A0x4951f9856aa1f6c5!2sGULF%20TIME%20MEDIA%20LLC!5e0!3m2!1sen!2sin!4v1700242557236!5m2!1sen!2sin" allowfullscreen="">
+</iframe>
+</div>
+<!-- End - Google Map Section -->
+
+<!-- Start | Copyright div -->
+<div class="section copyright-div">
+<p style="font-family: 'Playfair Display"><i class="fa fa-copyright" aria-hidden="true"></i> <a href="https://gulftimemedia.com/" target="_blank">Gulf Time Media LLC</a></p>
+</div>
+<!-- End | Copyright div -->
+
+
+</div>
+</div>
+
+
+<script src="{% static 'profile/assets/jquery-3.2.1.slim.min.js' %}" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="{% static 'profile/assets/ajax/libs/popper.js/1.12.9/umd/popper.min.js' %}" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="{% static 'profile/assets/js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'profile/assets/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js' %}"></script>
+
+
+{% if messages %}
+           {%for message in messages %}
+  <script>
+    // Display messages using JavaScript
+     window.onload = function () {
+         alert('{{message}}')
+      }
+  </script>
+       {%endfor%}
+
+   {%endif%}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var whatsappButtons = document.querySelectorAll('.whatsapp-enquiry-btn');
+
+        whatsappButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                var product = button.getAttribute('data-product');
+                var enquiryText = button.getAttribute('data-enquiry');
+                var whatsappLink = "https://wa.me/{{ profile.whatsapp }}?text=" + encodeURIComponent(enquiryText);
+
+                window.open(whatsappLink, '_blank');
+            });
+        });
+    });
+</script>
+<script>
+function generateVCard() {
+  var contactName = "{{ profile.name }}";
+  var contactPhone = "{{ profile.phone }}";
+  var contactWhatsApp = "{{ profile.whatsapp }}";
+  var contactEmail = "{{ profile.email }}";
+  var contactWebsite = "{{ profile.website }}";
+  var contactPosition = "{{ profile.position }}";
+
+  // Generate vCard content
+  var vCardContent = `BEGIN:VCARD
+VERSION:3.0
+FN:${contactName}
+TEL:${contactPhone}
+EMAIL:${contactEmail}
+URL:${contactWebsite}
+NOTE:Whatsapp:${contactWhatsApp}
+END:VCARD`;
+
+  // Create a Blob containing the vCard content
+  var blob = new Blob([vCardContent], { type: 'text/vcard;charset=utf-8' });
+
+  // Create a link element to trigger the download
+  var link = document.createElement('a');
+  link.href = window.URL.createObjectURL(blob);
+  link.download = 'contact.vcf';
+
+  // Append the link to the document and trigger the download
+  document.body.appendChild(link);
+  link.click();
+
+  // Remove the link from the document
+  document.body.removeChild(link);
+}
+</script>
+</body>
+</html>
